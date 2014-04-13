@@ -1,0 +1,41 @@
+<%= form_for(@story, :html => {:multipart => true}) do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :storyfile %><br>
+<!--     <%= f.file_field :storyfile, accept:"audio/*", capture:""%> -->
+    <%= f.file_field :storyfile%>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :storyfile_cache %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :latitude, :value => @lat %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :longitude, :value => @long %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :storyname, :value => @storyname %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :vicinity, :value => @vicinity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

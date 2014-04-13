@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landstorycorps</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<!--   <%= javascript_include_tag "application", "data-turbolinks-track" => true %> -->
+<%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="javascript:window.history.back()"><i class="fa fa-arrow-circle-o-left fa-3x"></i></a>
+      <a class="brand" href="/"><i class="fa fa-home fa-3x"></i></a>
+      <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, :class => "brand" do %>
+          <i class="fa fa-sign-out fa-3x"></i>
+        <% end %>
+<!--         <a class="brand" href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out fa-3x"></i></a> -->
+      <% end %>
+      <div class="brand" id='appTitle'>VStoryCorps</div>
+<!--       <ul class="nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul> -->
+    </div>
+  </div>
+  <div class="container-fluid">
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+  <%= yield %>
+  </div>
+</body>
+</html>
