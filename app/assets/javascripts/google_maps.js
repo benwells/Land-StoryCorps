@@ -53,7 +53,6 @@ function initialize() {
   });
 
   function callback(results, status) {
-    console.log("callback called")
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
         var place = results[i];
@@ -117,5 +116,7 @@ function createMarker(place) {
 }
 
 $('document').ready(function() {
-  google.maps.event.addDomListener(window, 'load', initialize);
+  if (location.pathname === "/") {
+    google.maps.event.addDomListener(window, 'load', initialize);
+  }
 });
